@@ -72,8 +72,8 @@ export const App = () => {
         <FormContact
           name={name}
           number={number}
-          onSubmit={handleSubmit}
           onChange={handleChange}
+          onSubmit={handleSubmit}
         />
         <h2>Contacts list</h2>
         <ContactList contacts={findContacts} deleteContact={deleteContact} />
