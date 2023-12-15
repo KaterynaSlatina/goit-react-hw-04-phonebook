@@ -8,20 +8,21 @@ import './App.module.css';
 
 export const App = () => {
   const [contacts, setContacts] = useState([]);
-  const [filter, setFilter] = useState([]);
+  const [filter, setFilter] = useState('');
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
-  handleSubmit = e => {
+  const handleSubmit = e => {
     e.preventDefault();
-    const isNameExist = contacts.some(
-      contact => contact.name.toLowerCase() === newContact.name.toLowerCase()
-    );
     const newContact = {
       id: nanoid(),
       name,
       number,
     };
+    const isNameExist = contacts.some(
+      contact => contact.name.toLowerCase() === newContact.name.toLowerCase()
+    );
+
     if (isNameExist) {
       alert(`${newContact.name} is already in contacts!`);
     } else {
@@ -45,7 +46,7 @@ export const App = () => {
     setFilter(e.target.value);
   };
 
-  deleteContact = id => {
+  const deleteContact = id => {
     setContacts(prevState => prevState.filter(contact => contact.id !== id));
   };
 
@@ -57,7 +58,7 @@ export const App = () => {
     }
   }, []);
 
-  useState(() => {
+  useEffect(() => {
     localStorage.setItem('contacts', JSON.stringify(contacts));
   }, [contacts]);
 

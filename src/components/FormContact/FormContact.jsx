@@ -3,16 +3,16 @@ import React from 'react';
 // import { nanoid } from 'nanoid';
 import css from './FormContact.module.css';
 
-export const FormContact = ({ name, number, handleChange, handleSubmit }) => {
+export const FormContact = ({ name, number, onChange, onSubmit }) => {
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={onSubmit}>
       <label>
         Name
         <input
           type="text"
           name="name"
           value={name}
-          onChange={handleChange}
+          onChange={onChange}
           required
         />
       </label>
@@ -23,7 +23,7 @@ export const FormContact = ({ name, number, handleChange, handleSubmit }) => {
           type="tel"
           name="number"
           value={number}
-          onChange={handleChange}
+          onChange={onChange}
           required
         />
       </label>
